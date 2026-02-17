@@ -29,4 +29,4 @@ Pour compiler le rapport:
 - Si vous souhaitez compiler localement, vous pouvez utiliser MixTex sur Windows, ou TeXLive sur Linux. Pour éditer, le mieux est alors d'utiliser Visual Studio Code avec l'extension LaTeX Workshop.
 
 
-Vous pouvez accéder au rapport vierge compilé avec le fichier `main.pdf`.
+Vous pouvez accéder au rapport vierge compilé avec le fichier [main.pdf](main.pdf).
