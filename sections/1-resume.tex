@@ -1,1 +1,9 @@
 \section*{Résumé}
+
+Ce projet de R\&D vise la conception d'une extension navigateur dédiée à la mesure et à l'analyse des performances web en conditions réelles d'usage. L'objectif est de proposer un outil plus pédagogique et plus accessible que les solutions d'audit classiques, tout en conservant des indicateurs techniquement pertinents pour le diagnostic.
+
+Le prototype développé, \textit{Traffic Monitor}, interroge périodiquement une API serveur et agrège les informations de trafic HTTP (méthode, point d'accès, code de statut, durée). Les données sont transformées en indicateurs de synthèse (temps de réponse moyen et maximal, taux de succès/erreur, volume de requêtes, distribution des statuts et méthodes), puis visualisées dans une interface compacte intégrée au navigateur.
+
+La démarche méthodologique combine une revue de littérature sur les métriques de performance web, la conception d'une architecture logicielle légère (popup + logique d'analyse), et une phase d'expérimentation via un serveur de test local. Les résultats montrent la faisabilité d'un suivi continu de la performance, utile pour identifier rapidement des points de ralentissement côté serveur ou réseau. Le module de signaux de sécurité (détection de connexions suspendues de type slowloris) illustre en outre l'intérêt d'une approche unifiée performance/sécurité.
+
+Le prototype reste cependant contraint par la qualité des données remontées par l'API et par le périmètre des endpoints disponibles. Les perspectives portent sur l'extension à davantage de métriques orientées utilisateur (par exemple Core Web Vitals côté client), la comparaison systématique avec des outils de référence, et l'amélioration de l'aide à l'interprétation pour des utilisateurs non experts.

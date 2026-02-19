@@ -1,1 +1,50 @@
 \section{Résultats}
+\label{sec:resultats}
+
+\subsection{Résultats fonctionnels}
+
+Le prototype atteint les objectifs fonctionnels fixés pour une première itération :
+
+\begin{itemize}
+    \item connexion à une API de trafic avec authentification par clé ;
+    \item affichage en continu des requêtes récentes (méthode, endpoint, statut, durée, horodatage) ;
+    \item calcul et affichage d'indicateurs agrégés de performance ;
+    \item visualisation de l'évolution des temps de réponse sous forme de graphe ;
+    \item test de connectivité via endpoint de santé.
+\end{itemize}
+
+La fréquence de polling retenue permet une perception quasi temps réel de l'activité serveur, avec une interface suffisamment compacte pour un usage en contexte de diagnostic rapide.
+
+\subsection{Capacité de diagnostic}
+
+Les expérimentations sur serveur local mettent en évidence trois apports principaux :
+
+\begin{itemize}
+    \item \textbf{Détection des lenteurs :} les pics de durée sont rapidement visibles dans le graphe et la liste des requêtes les plus lentes ;
+    \item \textbf{Identification des zones chaudes :} les endpoints les plus sollicités sont isolés, facilitant la priorisation des optimisations ;
+    \item \textbf{Lecture de la qualité de service :} la combinaison taux de succès/taux d'erreur fournit un indicateur simple de stabilité.
+\end{itemize}
+
+Ces observations confirment l'intérêt d'une agrégation continue, complémentaire aux audits ponctuels réalisés par des outils de benchmark \cite{afonso2020correlating,bajaj2019hybrid}.
+
+\subsection{Bilan par objectif}
+
+\begin{center}
+    \begin{tabular}{|p{6.5cm}|p{3.8cm}|}
+        \hline
+        \textbf{Objectif}                               & \textbf{Niveau d'atteinte} \\
+        \hline
+        Identifier des indicateurs clés de performance  & Atteint                    \\
+        \hline
+        Concevoir un protocole de mesure simple         & Atteint                    \\
+        \hline
+        Développer un prototype d'extension fonctionnel & Atteint                    \\
+        \hline
+        Tester sur différents types de sites            & Partiellement atteint      \\
+        \hline
+        Proposer une visualisation claire des résultats & Atteint                    \\
+        \hline
+    \end{tabular}
+\end{center}
+
+Le point partiellement atteint concerne la diversité des environnements testés. À ce stade, l'évaluation repose principalement sur un serveur local de simulation et non sur une campagne exhaustive multi-sites.

@@ -1,2 +1,43 @@
-\section*{Annexe B Titre d’un autre document}
-Détail de l’annexe B.
+\section*{Annexe B -- Protocole de test reproductible}
+
+Cette annexe décrit la procédure minimale permettant de reproduire les tests présentés dans ce rapport.
+
+\subsection*{B.1 Préparation}
+
+\begin{enumerate}
+  \item Se placer dans le dossier du serveur de test.
+  \item Installer les dépendances Node.js.
+  \item Démarrer le serveur local (port 3000).
+\end{enumerate}
+
+\subsection*{B.2 Configuration de l'extension}
+
+\begin{enumerate}
+  \item Ouvrir la page d'administration des extensions du navigateur Chromium.
+  \item Activer le mode développeur.
+  \item Charger le projet en mode \textit{Load unpacked}.
+  \item Dans le popup, renseigner :
+        \begin{itemize}
+          \item URL serveur : \texttt{http://localhost:3000}
+          \item Clé API : \texttt{trafficapikey}
+        \end{itemize}
+\end{enumerate}
+
+\subsection*{B.3 Exécution et collecte}
+
+\begin{enumerate}
+  \item Cliquer sur \textit{Connect} pour démarrer le polling.
+  \item Générer du trafic en naviguant vers des routes locales.
+  \item Observer les métriques agrégées et le graphe des latences.
+  \item Utiliser \textit{Refresh} pour forcer une mise à jour immédiate.
+\end{enumerate}
+
+\subsection*{B.4 Critères de validation}
+
+Le test est considéré valide si :
+\begin{itemize}
+  \item des entrées apparaissent dans le flux trafic ;
+  \item les compteurs évoluent avec la charge générée ;
+  \item les requêtes lentes sont correctement identifiées ;
+  \item le test de santé (\texttt{/api/health}) confirme la connectivité.
+\end{itemize}

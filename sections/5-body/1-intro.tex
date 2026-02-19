@@ -1,1 +1,12 @@
 \section{Introduction}
+\label{sec:introduction}
+
+La performance web constitue un levier déterminant pour l'expérience utilisateur, le référencement naturel et la sobriété numérique. Des temps de réponse élevés dégradent la satisfaction et peuvent augmenter l'empreinte énergétique d'un service en prolongeant les temps de calcul, de transfert réseau et d'affichage \cite{hoxmeier2000system,nah2004study,coroama2014assessing}.
+
+Dans ce contexte, les outils existants (Lighthouse, WebPageTest, GTmetrix) offrent des analyses riches, mais leurs résultats sont parfois difficiles à interpréter pour un public non spécialiste, en particulier lorsqu'il faut relier un score global à des causes techniques précises \cite{afonso2020correlating}. Le projet présenté ici répond à ce besoin en proposant un prototype d'extension navigateur centré sur des métriques lisibles et actionnables.
+
+La problématique étudiée est la suivante : \textit{comment mesurer efficacement les performances d'un site web dans des conditions réelles d'utilisation et identifier simplement les facteurs principaux responsables des ralentissements ?}
+
+L'hypothèse de travail est qu'une extension basée sur l'analyse continue du trafic HTTP et sur des indicateurs de synthèse peut fournir une mesure à la fois fiable, pédagogique et exploitable pour le diagnostic. Le prototype \textit{Traffic Monitor} a été conçu pour tester cette hypothèse.
+
+Le présent rapport détaille : (i) la méthodologie et l'architecture retenues (section~\ref{sec:materiel-methodes}), (ii) les résultats obtenus lors de tests sur serveur local (section~\ref{sec:resultats}), (iii) les limites identifiées et les perspectives d'amélioration (sections~\ref{sec:discussion} et~\ref{sec:conclusion}).

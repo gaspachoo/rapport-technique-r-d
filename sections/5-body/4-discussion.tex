@@ -1,1 +1,33 @@
 \section{Discussion}
+\label{sec:discussion}
+
+\subsection{Interprétation des résultats}
+
+Les résultats obtenus valident l'hypothèse principale : une extension navigateur peut fournir une lecture claire et utile de la performance web à partir de métriques simples et de traces réseau agrégées. L'approche présente un bon niveau de réactivité et permet de relier directement certaines dégradations à des endpoints spécifiques.
+
+Le prototype se positionne comme un outil d'aide au diagnostic rapide plutôt que comme une plateforme complète de benchmarking. Il est particulièrement pertinent en phase de développement, de recette technique ou de surveillance applicative locale.
+
+\subsection{Comparaison aux outils existants}
+
+Par rapport aux outils généralistes d'audit, l'approche retenue privilégie :
+
+\begin{itemize}
+    \item l'observation continue plutôt qu'un score ponctuel ;
+    \item des indicateurs directement reliés au trafic HTTP réel ;
+    \item une interface minimaliste orientée lecture opérationnelle.
+\end{itemize}
+
+En contrepartie, le prototype couvre un spectre plus restreint que des solutions matures (absence d'analyse front-end avancée, instrumentation limitée côté rendu navigateur), ce qui est cohérent avec le périmètre d'un premier jalon R\&D.
+
+\subsection{Limites et menaces à la validité}
+
+Plusieurs limites doivent être explicitées :
+
+\begin{itemize}
+    \item \textbf{Dépendance à l'API serveur :} la qualité de l'analyse dépend directement de la granularité et de la fiabilité des données remontées ;
+    \item \textbf{Portée des tests :} la campagne expérimentale reste centrée sur un environnement local ;
+    \item \textbf{Biais de charge :} la génération de trafic n'émule pas toutes les conditions réelles (variabilité réseau, charge utilisateur massive, hétérogénéité matérielle) ;
+    \item \textbf{Mesures perçues utilisateur :} certains indicateurs UX (LCP, INP) ne sont pas encore intégrés de manière robuste.
+\end{itemize}
+
+Ces limites sont classiques dans une phase de prototypage et confirment la nécessité d'une itération ultérieure orientée validation externe et comparaison systématique \cite{ionescu2015comparative,butkiewicz2011understanding}.

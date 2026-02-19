@@ -1,1 +1,45 @@
 \section{Matériel et méthodes}
+\label{sec:materiel-methodes}
+
+\subsection{Démarche générale}
+
+La démarche suivie reprend les étapes de la note de cadrage : revue de littérature, sélection d'indicateurs, conception de l'architecture, développement d'un prototype, puis phase de test et d'analyse. Le choix a été fait de privilégier une approche incrémentale avec un périmètre fonctionnel réduit mais opérationnel.
+
+\subsection{Architecture du prototype}
+
+Le prototype est implémenté sous forme d'extension Chromium en JavaScript. Son fonctionnement repose sur trois briques principales :
+
+\begin{itemize}
+    \item une interface utilisateur (popup) pour la configuration, l'affichage du trafic et la visualisation des indicateurs ;
+    \item une logique d'analyse agrégée pour extraire les tendances (endpoints dominants, taux de succès, lenteurs) ;
+    \item une API serveur exposant les flux de trafic et métriques, interrogée en \textit{polling}.
+\end{itemize}
+
+L'extension interroge \texttt{/api/traffic} toutes les 100 ms en mode connecté, puis met à jour les cartes de synthèse et le graphe des temps de réponse. Un endpoint de santé (\texttt{/api/health}) est utilisé pour valider la connectivité. Les données d'authentification (clé API) sont stockées localement via \texttt{chrome.storage.local}.
+
+\subsection{Indicateurs retenus}
+
+La sélection des indicateurs vise un compromis entre simplicité de compréhension et utilité technique. Les mesures présentées dans l'interface sont :
+
+\begin{itemize}
+    \item temps de réponse moyen et maximal ;
+    \item taux de succès et taux d'erreur ;
+    \item volume total de requêtes et rythme de requêtes par minute ;
+    \item répartition des méthodes HTTP et des codes de statut ;
+    \item classement des endpoints les plus sollicités et des requêtes les plus lentes.
+\end{itemize}
+
+Ces indicateurs s'inscrivent dans la continuité des recommandations issues de la littérature sur la performance perçue, les tests de charge et la planification de capacité \cite{menasce2002capacity,butkiewicz2011understanding,ionescu2015comparative}.
+
+\subsection{Protocole expérimental}
+
+Un serveur local de test (Node.js/Express) a été utilisé pour simuler le trafic entrant et exposer les endpoints minimaux : \texttt{/api/traffic}, \texttt{/api/metrics} et \texttt{/api/health}. Le protocole comprend :
+
+\begin{enumerate}
+    \item démarrage du serveur de test et connexion de l'extension ;
+    \item génération manuelle de trafic via des requêtes HTTP répétées ;
+    \item observation en temps réel des évolutions de métriques ;
+    \item vérification de la cohérence des agrégations affichées.
+\end{enumerate}
+
+En complément, une interface de signaux de sécurité de type slowloris a été intégrée. Les endpoints associés (\texttt{/api/slowloris}, \texttt{/api/block-ip}, \texttt{/api/unblock-ip}, \texttt{/api/blocked-ips}) restent optionnels et ne sont pas fournis par le serveur de test standard.
