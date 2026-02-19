@@ -15,7 +15,7 @@ Le prototype est implémenté sous forme d'extension Chromium en JavaScript. Son
     \item une API serveur exposant les flux de trafic et métriques, interrogée en \textit{polling}.
 \end{itemize}
 
-L'extension interroge \texttt{/api/traffic} toutes les 100 ms en mode connecté, puis met à jour les cartes de synthèse et le graphe des temps de réponse. Un endpoint de santé (\texttt{/api/health}) est utilisé pour valider la connectivité. Les données d'authentification (clé API) sont stockées localement via \texttt{chrome.storage.local}.
+L'extension interroge \texttt{/api/traffic} toutes les 100 ms en mode connecté, puis met à jour les cartes de synthèse et le graphe des temps de réponse. Un endpoint de santé (\texttt{/api/health}) est utilisé pour valider la connectivité. Les données d'authentification (clé API) sont stockées localement via \texttt{chrome.storage.local}. Le détail du contrat d'API est fourni en \hyperref[annexe:api]{Annexe A}.
 
 \subsection{Indicateurs retenus}
 
@@ -42,4 +42,4 @@ Un serveur local de test (Node.js/Express) a été utilisé pour simuler le traf
     \item vérification de la cohérence des agrégations affichées.
 \end{enumerate}
 
-En complément, une interface de signaux de sécurité de type slowloris a été intégrée. Les endpoints associés (\texttt{/api/slowloris}, \texttt{/api/block-ip}, \texttt{/api/unblock-ip}, \texttt{/api/blocked-ips}) restent optionnels et ne sont pas fournis par le serveur de test standard.
+En complément, une interface de signaux de sécurité de type slowloris a été intégrée. Les endpoints associés (\texttt{/api/slowloris}, \texttt{/api/block-ip}, \texttt{/api/unblock-ip}, \texttt{/api/blocked-ips}) restent optionnels et ne sont pas fournis par le serveur de test standard. La procédure de test reproductible est détaillée en \hyperref[annexe:protocole]{Annexe B}.

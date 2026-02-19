@@ -1,22 +1,24 @@
 \section*{Annexe A -- Contrat d'API du prototype}
+\phantomsection
+\label{annexe:api}
 
 Le prototype \textit{Traffic Monitor} repose sur une API HTTP simple. Toutes les routes, sauf mention contraire, attendent l'en-tête \texttt{X-Traffic-Key}.
 
 \subsection*{Endpoints requis}
 
 \begin{itemize}
-  \item \texttt{GET /api/traffic} : retourne la liste des requêtes observées avec les champs \texttt{timestamp}, \texttt{method}, \texttt{path}, \texttt{statusCode}, \texttt{duration}.
-  \item \texttt{GET /api/metrics} : retourne les métriques agrégées utilisées par l'interface (temps moyen/max, taux de succès/erreur, volume, cadence).
-  \item \texttt{GET /api/health} : endpoint de santé sans authentification permettant le test de connectivité.
+    \item \texttt{GET /api/traffic} : retourne la liste des requêtes observées avec les champs \texttt{timestamp}, \texttt{method}, \texttt{path}, \texttt{statusCode}, \texttt{duration}.
+    \item \texttt{GET /api/metrics} : retourne les métriques agrégées utilisées par l'interface (temps moyen/max, taux de succès/erreur, volume, cadence).
+    \item \texttt{GET /api/health} : endpoint de santé sans authentification permettant le test de connectivité.
 \end{itemize}
 
 \subsection*{Endpoints optionnels (volet sécurité)}
 
 \begin{itemize}
-  \item \texttt{GET /api/slowloris} : informations de risque et connexions suspectes.
-  \item \texttt{POST /api/block-ip} : blocage d'une adresse IP.
-  \item \texttt{POST /api/unblock-ip} : déblocage d'une adresse IP.
-  \item \texttt{GET /api/blocked-ips} : liste des IP actuellement bloquées.
+    \item \texttt{GET /api/slowloris} : informations de risque et connexions suspectes.
+    \item \texttt{POST /api/block-ip} : blocage d'une adresse IP.
+    \item \texttt{POST /api/unblock-ip} : déblocage d'une adresse IP.
+    \item \texttt{GET /api/blocked-ips} : liste des IP actuellement bloquées.
 \end{itemize}
 
 Le serveur de test local fourni dans le projet implémente uniquement les endpoints requis, ce qui permet de valider le cœur fonctionnel sans dépendre des fonctionnalités de sécurité avancées.
